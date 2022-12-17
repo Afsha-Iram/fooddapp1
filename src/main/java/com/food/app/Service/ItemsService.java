@@ -6,7 +6,7 @@ import com.food.app.model.Items;
 
 public interface ItemsService {
 	
-	Items save(Items items);
+	Items saveItems(Items items);
 	List<Items> getAll();
 
 }

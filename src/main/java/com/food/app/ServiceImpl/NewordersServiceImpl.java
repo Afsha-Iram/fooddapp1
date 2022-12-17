@@ -22,7 +22,7 @@ public class NewordersServiceImpl implements NewordersService {
 	}
 
 	@Override
-	public Neworders save(Neworders neworders) {
+	public Neworders saveNeworders(Neworders neworders) {
 		
 		return newordersRepo.save(neworders);
 	}

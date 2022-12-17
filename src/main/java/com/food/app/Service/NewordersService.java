@@ -6,7 +6,7 @@ import com.food.app.model.Neworders;
 
 public interface NewordersService {
 	
-	Neworders save (Neworders neworders);
+	Neworders saveNeworders(Neworders neworders);
 	
 	List<Neworders> getAll();
 	

@@ -7,7 +7,7 @@ import com.food.app.model.Status;
 public interface StatusService {
 	
 
-	Status save(Status status);
+	Status saveStatus(Status status);
 	
 	List<Status> getAll();
 

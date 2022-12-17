@@ -1,19 +1,20 @@
 package com.food.app.Controller;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.food.app.Request.NewordersReq;
-import com.food.app.Request.NewordersReq.Item;
+
 import com.food.app.Service.ItemsService;
 import com.food.app.Service.NewordersService;
 import com.food.app.Service.StatusService;
@@ -28,7 +29,7 @@ public class NewordersController {
 	private NewordersService newordersSerice;
 	private StatusService statusService;
 	private ItemsService itemsService;
-	private List<Object> Items = new ArrayList<>();
+	
 	
 
 	
@@ -42,29 +43,29 @@ public class NewordersController {
 
 	@PostMapping
 	public ResponseEntity<String> saveNewOrders(@RequestBody NewordersReq req){
-		if (req.getItems() == null) {
-	        return new ResponseEntity<String>("items field is null", HttpStatus.BAD_REQUEST);
-	    }
+		
+	       
 		
 		Status s =new Status();
 		s.setAccepted(req.getStatus());
 		s.setRejected(req.getStatus());
 	
-		s=statusService.save(s);
+		s=statusService.saveStatus(s);
 
 		
 		Neworders n= new Neworders(req);
 		n.setStatus(s);
 		
-		n=newordersSerice.save(n);
+		n=newordersSerice.saveNeworders(n);
 		
-		for (Item st: req.getItems()) {
-			Items i= new Items();	
-			i.setName(st);
-			i.setPrice(st);
-			i.setQuantity(st);
+		for (String st: req.getItems()) {
+			Items items= new Items();	
+			items.setName(st);
+			items.setPrice(st);
+			items.setQuantity(st);
+			items.setNeworders(n);
 			
-			itemsService.save(i);
+			items=itemsService.saveItems(items);
 			}
 		
 		return new ResponseEntity<String>("saved successfully", HttpStatus.CREATED);

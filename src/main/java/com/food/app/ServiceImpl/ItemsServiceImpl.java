@@ -2,10 +2,11 @@ package com.food.app.ServiceImpl;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.food.app.Repository.ItemsRepo;
-import com.food.app.Request.NewordersReq.Item;
+
 import com.food.app.Service.ItemsService;
 import com.food.app.model.Items;
 
@@ -20,7 +21,7 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public Items save(Items items) {
+	public Items saveItems(Items items) {
 		
 		return itemsRepo.save(items);
 	}

@@ -1,5 +1,6 @@
 package com.food.app.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class Neworders {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="neworders_id")
-	private List<Items> items;
+	private List<Items> items= new ArrayList<>();
 	
 	public Neworders(String restaurantId, String preparationTime, String recivedTime, String orders_id,
 			String deliverStatus, Status status, List<Items> items) {
